@@ -11,9 +11,18 @@ class Card {
 
     getElement() {
         this.element = this._getTemplate().cloneNode(true); // клонируем полученное содержимое из шаблона
-        this.cardTitle = this.element.querySelector('.card__name');
-        this.cardImage = this.element.querySelector('.card__image');
-        this.cardLike = this.element.querySelector('.card__like');
+        const cardTitle = this.element.querySelector('.card__name');
+        const cardImage = this.element.querySelector('.card__image');
+        const cardLike = this.element.querySelector('.card__like');
+
+        cardTitle.textContent = this.dataCat.name;
+        cardImage.src = this.dataCat.image;
+
+
+        if (this.dataCat.favourite) {
+            cardLike.classList.toggle('card__like_active')
+            // cardLike.remove() можно в элс чтоб удалить серые лайки
+        }
 
         return this.element
     }
